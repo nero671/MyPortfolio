@@ -1,0 +1,146 @@
+@media (max-width: 960px) {
+  .container {
+    width: 95%;
+  }
+  h1 {
+    font-size: 55px;
+  }
+  .header__subtitle {
+    font-size: 25px;
+  }
+  .header__arrow {
+    margin-top: 130px;
+  }
+  .title {
+    margin-left: 30px;
+  }
+  .future {
+    margin-left: 30px;
+  }
+  .works__items {
+    flex-basis: 50%;;
+  }
+  .overlay {
+    width: inherit;
+  }
+}
+
+@media (max-width: 895px) {
+  .navbar__contacts {
+    display: none;
+  }
+  .navbar {
+    display: none;
+  }
+  .header__me {
+    display: flex;
+  }
+  .skills__item {
+    flex-basis: 50%;
+  }
+}
+
+
+
+@media (max-width: 728px) {
+  h1 {
+    width: 100%;
+    padding: 0px;
+    text-align: center;
+    font-size: 50px;
+    margin-top: 250px;
+  }
+  .header__subtitle {
+    font-size: 25px;
+  }
+  .header__arrow {
+    margin-top: 150px;
+  }
+  .title {
+    margin-left: 30px;
+  }
+  .future {
+    margin-left: 30px;
+  }
+}
+
+@media (max-width: 635px) {
+  .about {
+    display: block;
+  }
+  .about__items-adv {
+    margin-left: 0px;
+  }
+  .conection {
+    justify-content: start;
+  }
+  .conection__logo {
+    margin-left: 20px;
+  }
+  .conection__text {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 515px) {
+  .modal__block {
+    max-width: 320px;
+  }
+  .modal__image {
+    max-width: 105px;
+  }
+  .modal__contacts {
+    margin-left: -115px;
+  }
+}
+
+@media (max-width: 440px) {
+  .skills__item {
+    flex-basis: 100%;
+  }
+  .menu__modal {
+    right: 35px;
+  }
+  .footer {
+    flex-direction: column;
+    align-items: baseline;
+  }
+  .future {
+    margin-bottom: 23px;
+    margin-left: 0px;
+  }
+  .class__media {
+    margin-bottom: 50px;
+  }
+}
+
+@media (max-width: 400px) {
+  .menu__modal{
+    right: 30px;
+    top: 30px;
+  }
+  .logo {
+    font-size: 14px;
+  }
+  h1 {
+    margin-top: 200px;
+    font-size: 45px;
+  }
+  .advantages__items_text {
+    font-size: 10px;
+  }
+  .conection {
+    flex-direction: column;
+    align-items: baseline;
+  }
+  .conection__contacts {
+    display: flex;
+    flex-direction: column;
+    order: 2;
+  }
+  .conection__logo {
+    margin-left: 0px;
+    order: 1;
+    margin: 20px 0;
+  }
+}
