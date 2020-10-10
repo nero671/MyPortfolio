@@ -17,9 +17,6 @@
   .future {
     margin-left: 30px;
   }
-  .works__items {
-    flex-basis: 50%;;
-  }
   .overlay {
     width: inherit;
   }
@@ -79,6 +76,12 @@
   }
   .conection__text {
     font-size: 11px;
+  }
+  .works__items img {
+    border: 1px solid black;
+  }
+  .works__items:hover .overlay {
+    display: none !important;
   }
 }
 

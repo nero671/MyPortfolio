@@ -309,7 +309,6 @@ h1 {
 
 .works {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
 }
 
@@ -318,6 +317,7 @@ h1 {
   width: 300px;
   height: 300px;
   margin-top: 30px;
+  margin-right: 10px;
 }
 
 .works__items img {
