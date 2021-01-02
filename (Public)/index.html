@@ -1,89 +1,656 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MyPorfolio</title>
+      <link rel="stylesheet" href="css/main.css">
+      <link rel="stylesheet" href="css/fonts.css">
+      <link rel="stylesheet" href="css/media.css">
+      <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/8.1.2/firebase-app.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/8.1.2/firebase-auth.js"></script>
-    <script defer src="/__/firebase/8.1.2/firebase-database.js"></script>
-    <script defer src="/__/firebase/8.1.2/firebase-firestore.js"></script>
-    <script defer src="/__/firebase/8.1.2/firebase-functions.js"></script>
-    <script defer src="/__/firebase/8.1.2/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/8.1.2/firebase-storage.js"></script>
-    <script defer src="/__/firebase/8.1.2/firebase-analytics.js"></script>
-    <script defer src="/__/firebase/8.1.2/firebase-remote-config.js"></script>
-    <script defer src="/__/firebase/8.1.2/firebase-performance.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
   </head>
   <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+    <header>
+      <div class="container">
+        <div class="header">
+          <div class="logo">
+            <span>My</span>Portfolio
+          </div>
+          <nav class="navbar">
+            <a href="#about" class="navbar__link anchor">
+              Обо мне
+            </a>
+            <a href="#skills" class="navbar__link anchor">
+              Навыки
+            </a>
+            <a href="#works" class="navbar__link anchor">
+              Работы
+            </a>
+          </nav>
+          <div class="navbar__contacts">
+            <a href="https://mail.google.com/mail/u/0/#inbox">
+              kachalko101@gmail.com
+            </a>
+          </div>
+        </div>
+        <h1>
+          Дело, которым я живу
+        </h1>
+        <div class="header__subtitle">
+          Верстка & frontend
+        </div>
+        <button class="header__arrow" id="scroll">
+          <i class="fa fa-long-arrow-alt-down" aria-hidden="true"></i>
+        </button>
+        
+      </div>
+    </header>
+    <section id="about">
+      <div class="container">
+        <div class="title">
+          Обо мне
+        </div>
+        <div class="about">
+          <div class="about__items">
+            <div class="about__items_title">
+              Бэкграунд
+            </div>
+            <div class="about__items_text">
+              <strong>Привет,</strong> меня зовут Станислав, мне 21 год. Я являюсь разработчиком из Беларуси и имею опыт работы с сайтами около года. Я люблю
+              то, что я делаю, и стараюсь совершенствоваться с каждым денем. <br><br> Если вам нужен адаптивный сайт или доработать уже существующий - я могу сделать это в кратчайшие
+              сроки! <br><br> Я также помогаю "посадить" ваш сайт на Wordpress или на любую другую CMS. 
+              <strong>Я выполняю работу вовремя, а также нахожу индивидуальный подход к каждому клиенту.</strong> 
+              <br><br>
+              Пожалуйста, не стесняйтесь обращаться ко мне :)
+            </div>
+          </div>
+          <div class="about__items-adv">
+            <div class="about__items_title">
+              Заслуги
+            </div>
+            <div class="advantages">
+              <div class="advantages__items">
+                <div class="advantages__items_img">
+                  26
+                </div>
+                <span class="advantages__items_text">
+                  Реализованных проектов
+                </span>
+              </div>
+              <div class="advantages__items">
+                <div class="advantages__items_img">
+                  22
+                </div>
+                <span class="advantages__items_text">
+                  Положительных отзывов
+                </span>
+              </div>
+              <div class="advantages__items">
+                <div class="advantages__items_img">
+                  1
+                </div>
+                <span class="advantages__items_text">
+                  Год <br> опыта
+                </span>
+              </div>
+            </div>
+            <div class="conection__title">
+              Связь
+            </div>
+            <div class="conection">
+              <div class="conection__contacts">
+                <a href="https://www.linkedin.com/in/stanislav-kachalko-ba39681b5/" class="conections__items">
+                  <span class="fab fa-linkedin" aria-hidden="true"></span>
+                  linkedin.com/
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=100008785002613" class="conections__items">
+                  <span class="fab fa-facebook" aria-hidden="true"></span>      www.facebook.com/
+                </a>
+                <a href="https://www.instagram.com/nero_vanetty/" class="conections__items">
+                  <span class="fab fa-instagram" aria-hidden="true"></span>     www.instagram.com/
+                </a>
+                <a href="https://twitter.com/VanettyNero" class="conections__items">
+                  <span class="fab fa-twitter" aria-hidden="true"></span>     twitter.com/
+                </a>
+                <a href="https://vk.com/id151036113" class="conections__items">
+                  <span class="fab fa-vk" aria-hidden="true"></span> vk.com/
+                </a>
+              </div>
+              <div class="conection__logo">
+                <img src="img/me.jpg" alt="icon" class="conection__logo_icon">
+                <div class="conection__text">
+                  <-- Contact me :)
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="skills">
+      <div class="container">
+        <div class="title">
+          Навыки
+        </div>
+        <div class="skills">
+          <div class="skills__item">
+            <div class="skills__round">
+              <div class="skills__round-inner">
+                98%
+              </div>
+            </div>
+            <div class="skills__text">
+              PhotoShop
+            </div>
+          </div>
+          <div class="skills__item">
+            <div class="skills__round">
+              <div class="skills__round-inner">
+                99%
+              </div>
+            </div>
+            <div class="skills__text">
+              Figma
+            </div>
+          </div>
+          <div class="skills__item">
+            <div class="skills__round">
+              <div class="skills__round-inner">
+                100%
+              </div>
+            </div>
+            <div class="skills__text">
+              CSS3
+            </div>
+          </div>
+          <div class="skills__item">
+            <div class="skills__round">
+              <div class="skills__round-inner">
+                100%
+              </div>
+            </div>
+            <div class="skills__text">
+              HTML5
+            </div>
+          </div>
+          <div class="skills__item">
+            <div class="skills__round">
+              <div class="skills__round-inner">
+                95%
+              </div>
+            </div>
+            <div class="skills__text">
+              JavaScript
+            </div>
+          </div>
+          <div class="skills__item">
+            <div class="skills__round">
+              <div class="skills__round-inner">
+                95%
+              </div>
+            </div>
+            <div class="skills__text">
+              jQuery
+            </div>
+          </div>
+          <div class="skills__item">
+            <div class="skills__round">
+              <div class="skills__round-inner">
+                100%
+              </div>
+            </div>
+            <div class="skills__text">
+              Bootstrap
+            </div>
+          </div>
+          <div class="skills__item">
+            <div class="skills__round">
+              <div class="skills__round-inner">
+                100%
+              </div>
+            </div>
+            <div class="skills__text">
+              Wordpress
+            </div>
+          </div>
+          <div class="skills__item">
+            <div class="skills__round">
+              <div class="skills__round-inner">
+                0%
+              </div>
+            </div>
+            <div class="skills__text">
+              Лень
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="works">
+      <div class="container">
+        <div class="title">
+          Работы
+        </div>
+        <div class="work__title">
+          Лучшие работы
+        </div>
+        <div class="works">
+          <div class="works__items">
+            <a href="https://nero671.github.io/relaxlive/">
+              <img src="img/relaxLive.jpg" alt="work">
+              <div class="overlay">
+                <p>Relax Live</p>
+                <a href="https://nero671.github.io/relaxlive/">
+                  Смотреть
+                  <hr>
+                </a>
+              </div>
+            </a>
+          </div>
+          <div class="works__items">
+            <a href="https://nero671.github.io/3dGlo/">
+              <img src="img/3dGlo.jpg" alt="work">
+              <div class="overlay">
+                <p>3dGlo</p>
+                <a href="https://nero671.github.io/3dGlo/">
+                  Смотреть
+                  <hr>
+                </a>
+              </div>
+            </a>
+          </div>
+          <div class="works__items">
+            <a href="https://nero671.github.io/Bulgaria/index.html">
+              <img src="img/Bulgariaa.jpg" alt="work">
+              <div class="overlay">
+                <p>Bulgaria</p>
+                <a href="https://nero671.github.io/Bulgaria/index.html">
+                  Смотреть
+                  <hr>
+                </a>
+              </div>
+            </a>
+          </div>
+          <div class="works__items">
+            <a href="https://nero671.github.io/deliveryFood/">
+              <img src="img/DeliveryFood.jpg" alt="work">
+              <div class="overlay">
+                <p>Delivery Food</p>
+                <a href="https://nero671.github.io/deliveryFood/">
+                  Смотреть
+                  <hr>
+                </a>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="work__title">
+          Вёрстка
+        </div>
+        <div class="works">
+          <div class="works__items">
+            <a href="https://nero671.github.io/Batman/">
+              <img src="img/Batman.jpg" alt="work">
+              <div class="overlay">
+                <p>The Batman</p>
+                <a href="https://nero671.github.io/Batman/">
+                  Смотреть
+                  <hr>
+                </a>
+              </div>
+            </a>
+          </div>
+          <div class="works__items">
+            <a href="https://nero671.github.io/Car-Repair-Shop/">
+              <img src="img/Автомастерская Хелиос.jpg" alt="work">
+              <div class="overlay">
+                <p>Автомастерская Хелиус</p>
+                <a href="https://nero671.github.io/Car-Repair-Shop/">
+                  Смотреть
+                  <hr>
+                </a>
+              </div>
+            </a>
+          </div>
+          <div class="works__items">
+            <a href="https://nero671.github.io/House/">
+              <img src="img/house.jpg" alt="work">
+              <div class="overlay">
+                <p>House</p>
+                <a href="https://nero671.github.io/House/">
+                  Смотреть
+                  <hr>
+                </a>
+              </div>
+            </a>
+          </div>
+          <div class="works__items">
+            <a href="https://nero671.github.io/ghostHunters/">
+              <img src="img/GhostHunters.jpg" alt="work">
+              <div class="overlay">
+                <p>Ghostbusters: Afterlife</p>
+                <a href="https://nero671.github.io/ghostHunters/">
+                  Смотреть
+                  <hr>
+                </a>
+              </div>
+            </a>
+          </div>
+          <div class="works__items">
+            <a href="https://nero671.github.io/Leo/">
+              <img src="img/Leo.jpg" alt="work">
+              <div class="overlay">
+                <p>Leo</p>
+                <a href="https://nero671.github.io/Leo/">
+                  Смотреть
+                  <hr>
+                </a>
+              </div>
+            </a>
+          </div>
+          <div class="works__items">
+            <a href="https://nero671.github.io/The-Witcher/">
+              <img src="img/TheWitcher.jpg" alt="work">
+              <div class="overlay">
+                <p>The Witcher</p>
+                <a href="https://nero671.github.io/The-Witcher/">
+                  Смотреть
+                  <hr>
+                </a>
+              </div>
+            </a>
+          </div>
+          <div class="works__items">
+            <a href="https://nero671.github.io/smartWatch/#">
+              <img src="img/Smart Watch.jpg" alt="work">
+              <div class="overlay">
+                <p>Smart Watch</p>
+                <a href="https://nero671.github.io/smartWatch/#">
+                  Смотреть
+                  <hr>
+                </a>
+              </div>
+            </a>
+          </div>
+          <div class="works__items">
+            <a href="https://nero671.github.io/New-Prowidence/">
+              <img src="img/NewProwidence.jpg" alt="work">
+              <div class="overlay">
+                <p>New Providence</p>
+                <a href="https://nero671.github.io/New-Prowidence/">
+                  Смотреть
+                  <hr>
+                </a>
+              </div>
+            </a>
+          </div>
+          <div class="works__items">
+            <a href="https://nero671.github.io/Maket/">
+              <img src="img/maketStore.jpg" alt="work">
+              <div class="overlay">
+                <p>Maket Storent</p>
+                <a href="https://nero671.github.io/Maket/">
+                  Смотреть
+                  <hr>
+                </a>
+              </div>
+            </a>
+          </div>
+          <div class="works__items">
+            <a href="https://nero671.github.io/BuildControl/">
+              <img src="img/buildControl.jpg" alt="work">
+              <div class="overlay">
+                <p>СтройКонтроль</p>
+                <a href="https://nero671.github.io/BuildControl/">
+                  Смотреть
+                  <hr>
+                </a>
+              </div>
+            </a>
+          </div>
+          <div class="works__items">
+            <a href="https://nero671.github.io/FashionWeek/">
+              <img src="img/fashionWeek.jpg" alt="work">
+              <div class="overlay">
+                <p>FashionWeek</p>
+                <a href="https://nero671.github.io/FashionWeek/">
+                  Смотреть
+                  <hr>
+                </a>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="work__title">
+          React
+        </div>
+        <div class="works">
+          <div class="works__items">
+          <a href="https://spacex-a07bc.web.app/">
+            <img src="img/spacex.jpg" alt="work">
+            <div class="overlay">
+              <p>SpaceX</p>
+              <a href="https://spacex-a07bc.web.app/">
+                Смотреть
+                <hr>
+              </a>
+            </div>
+          </a>
+          </div>
+            <div class="works__items">
+          <a href="https://mrdonalds-bf0ab.web.app/">
+            <img src="img/mcDonalds.jpg" alt="work">
+            <div class="overlay">
+              <p>MrDonald's</p>
+              <a href="https://mrdonalds-bf0ab.web.app/">
+                Смотреть
+                <hr>
+              </a>
+            </div>
+          </a>
+          </div>
+        </div>
+        <div class="work__title">
+          Сервисы - JavaScript
+        </div>
+        <div class="works">
+          <div class="works__items">
+            <a href="https://nero671.github.io/Quiz/">
+              <img src="img/Quize.jpg" alt="work">
+              <div class="overlay">
+                <p>Quiz</p>
+                <a href="https://nero671.github.io/Quiz/">
+                  Смотреть
+                  <hr>
+                </a>
+              </div>
+            </a>
+          </div>
+          <div class="works__items">
+            <a href="https://nero671.github.io/Netclicks/#">
+              <img src="img/Netclkicks.jpg" alt="work">
+              <div class="overlay">
+                <p>Netclicks</p>
+                <a href="https://nero671.github.io/Netclicks/#">
+                  Смотреть
+                  <hr>
+                </a>
+              </div>
+            </a>
+          </div>
+          <div class="works__items">
+            <a href="https://nero671.github.io/Aviasales/">
+              <img src="img/Aviasales.jpg" alt="work">
+              <div class="overlay">
+                <p>Aviasales</p>
+                <a href="https://nero671.github.io/Aviasales/">
+                  Смотреть
+                  <hr>
+                </a>
+              </div>
+            </a>
+          </div>
+          <div class="works__items">
+            <a href="https://nero671.github.io/Awito/">
+              <img src="img/Avito.jpg" alt="work">
+              <div class="overlay">
+                <p>Avito</p>
+                <a href="https://nero671.github.io/Awito/">
+                  Смотреть
+                  <hr>
+                </a>
+              </div>
+            </a>
+          </div>
+          <div class="works__items">
+            <a href="https://nero671.github.io/costCalculate/">
+              <img src="img/costCalculate.jpg" alt="work">
+              <div class="overlay">
+                <p>Cost Calculate</p>
+                <a href="https://nero671.github.io/costCalculate/">
+                  Смотреть
+                  <hr>
+                </a>
+              </div>
+            </a>
+          </div>
+          <div class="works__items">
+            <a href="https://nero671.github.io/ikeaShop/">
+              <img src="img/Ikea.jpg" alt="work">
+              <div class="overlay">
+                <p>Ikea Shop</p>
+                <a href="https://nero671.github.io/ikeaShop/">
+                  Смотреть
+                  <hr>
+                </a>
+              </div>
+            </a>
+          </div>
+          <div class="works__items">
+            <a href="https://pikadu-25539.web.app/">
+              <img src="img/pikadu.jpg" alt="work">
+              <div class="overlay">
+                <p>Pikadu</p>
+                <a href="https://pikadu-25539.web.app/">
+                  Смотреть
+                  <hr>
+                </a>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="work__title">
+          Браузерные игры
+        </div>
+        <div class="works">
+          <div class="works__items">
+          <a href="https://nero671.github.io/SeaWar/">
+            <img src="img/Battleship.jpg" alt="work">
+            <div class="overlay">
+              <p>Battleship</p>
+              <a href="https://nero671.github.io/SeaWar/">
+                Смотреть
+                <hr>
+              </a>
+            </div>
+          </a>
+          </div>
+            <div class="works__items">
+          <a href="https://nero671.github.io/Races/">
+            <img src="img/races.jpg" alt="work">
+            <div class="overlay">
+              <p>Races</p>
+              <a href="https://nero671.github.io/Races/">
+                Смотреть
+                <hr>
+              </a>
+            </div>
+          </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="container">
+        <div class="footer">
+          <div class="future">
+            2017-2099 / Смотрю в будущее
+          </div>
+          <div class="class__media">
+            <a href="https://www.instagram.com/nero_vanetty/"><img src="img/Group 1.svg" /></a>
+            <a href="https://vk.com/id151036113"><img src="img/Group 3.svg" /></a>
+            <a href="https://www.facebook.com/profile.php?id=100008785002613"><img src="img/Group 2.svg" /></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <div class="modal__submenu">
+      <div class="container">  
+        <div class="menu__modal">
+          <div class="header__me">
+            <img src="img/me.jpg" alt="icon" class="conection__logo_icon">
+            <span class="fa fa-angle-down"></span>
+          </div>
+          <div class="modal__menu-content">
+            <h4 class="menu__modal-title">
+              Аккаунт
+            </h4>
+            <nav class="modal__navbar">
+              <a href="#about" class="modal__navbar-link anchor">
+                Обо мне
+              </a>
+              <a href="#skills" class="modal__navbar-link anchor">
+                Навыки
+              </a>
+              <a href="#works" class="modal__navbar-link anchor">
+                Работы
+              </a>
+            </nav>
+          </div>
+        </div>
+      </div>
     </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-    </script>
+    <div class="modal modal__item hide">
+      <div class="modal__block">
+        <h2 class="modal__header">Станислав Качалко</h2>
+        <div class="modal__content">
+          <div class="modal__image-block"><img class="modal__image modal__image-item" src="img/me.jpg" alt="test"></div>
+          <div class="modal__description">
+            <h3 class="modal__header-item">Frontend-разработчик, верстальщик</h3>
+            <p>Профессионально выполняю работы любой сложности :)</p>
+            <div class="modal__contacts">
+              <p>Контакты: <br>
+                <div class="conection__contacts">
+                  <span>Контактный телефон: Telegram & WhatsUp</span>
+                  <div class="conections__items">
+                    +375447197447
+                  </div>
+                  <a href="https://www.linkedin.com/in/stanislav-kachalko-ba39681b5/" class="conections__items">
+                    <span class="fab fa-linkedin" aria-hidden="true"></span>
+                    linkedin.com/
+                  </a>
+                  <a href="https://www.facebook.com/profile.php?id=100008785002613" class="conections__items">
+                    <span class="fab fa-facebook" aria-hidden="true"></span> www.facebook.com/
+                  </a>
+                  <a href="https://www.instagram.com/nero_vanetty/" class="conections__items">
+                    <span class="fab fa-instagram" aria-hidden="true"></span> www.instagram.com/
+                  </a>
+                  <a href="https://twitter.com/VanettyNero" class="conections__items">
+                    <span class="fab fa-twitter" aria-hidden="true"></span> twitter.com/
+                  </a>
+                  <a href="https://vk.com/id151036113" class="conections__items">
+                    <span class="fab fa-vk" aria-hidden="true"></span> vk.com/
+                  </a>
+                </div>
+              </p>
+            </div>
+          </div>
+        </div>
+        <button class="modal__close">&#10008;</button>
+      </div>
+    </div>
+    <script src="js/main.js"></script>
   </body>
 </html>
