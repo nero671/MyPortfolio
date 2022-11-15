@@ -1,16 +1,3 @@
-// for (let anchor of anchors) {
-//   anchor.addEventListener('click', function (e) {
-//     e.preventDefault()
-
-//     const blockID = anchor.getAttribute('href')
-
-//     document.querySelector(blockID).scrollIntoView({
-//       behavior: 'smooth',
-//       block: 'center'
-//     })
-//   })
-// }
-const about = document.getElementById('about');
 const arrow = document.getElementById('scroll');
 const anchors = document.querySelectorAll('a.anchor');
 const headerMe = document.querySelector('.header__me');
@@ -55,10 +42,9 @@ const closeModal = event => {
 
   if (target.closest('.modal__close') || target.classList.contains('modal') ||
     event.code == 'Escape') {
-    modal.classList.remove('is-open'); 
+    modal.classList.remove('is-open');
     document.removeEventListener('keydown', closeModal);
   }
-  console.log(event.code);
 };
 
 document.addEventListener('keydown', closeModal);
@@ -72,7 +58,78 @@ modalClose.addEventListener('click', closeModal);
 
 menuModal.addEventListener('click', changeArrow);
 
-// menuModal.addEventListener('click', openModal, changeArrow);
+
+////animations
+
+// Init Setups
+gsap.set(["#bubbles rect", "#bubbles circle", "#bubbles path"], {
+  transformOrigin: "50% 50%"
+});
+
+// Init Timeline
+const tl = gsap.timeline({
+  paused: false,
+  onComplete: () => {
+    gsap.to(".bubble", {
+      yPercent: -200,
+      scrollTrigger: {
+        trigger: 'svg',
+        scrub: 2,
+        start: 'top top',
+        end: 'bottom top',
+        markers: true,
+      }
+    });
+
+    ScrollTrigger.refresh()
+  }
+});
+// Debuggers
+//tl.seek(1, false);
+//ScrubGSAPTimeline(tl);
+
+tl.from(
+    ".circle_g",
+    {
+      duration: 2.75,
+      y: 150,
+      ease: "elastic.out(.25, 0.1)",
+      stagger: {
+        from: "random",
+        grid: [1, 4],
+        amount: 1,
+        ease: "power2"
+      }
+    },
+    0
+).from(
+    ".bubble",
+    {
+      duration: 1.5,
+      y: 150,
+      ease: "elastic.out(.1, 0.1)",
+      stagger: {
+        from: "random",
+        grid: [5, 15],
+        amount: 1.5
+      }
+    },
+    0
+);
 
 
+let panels = gsap.utils.toArray(".panel");
 
+let triggers = panels.map((panel, i) => {
+  let tween = gsap.to(panel, {
+    scale: 0.75,
+    scrollTrigger: {
+      trigger: panel,
+      start: "bottom bottom",
+      scrub: 1,
+      pin: true,
+      pinSpacing: false
+    }
+  });
+  return tween.scrollTrigger;
+});
