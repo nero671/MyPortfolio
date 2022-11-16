@@ -497,3 +497,14 @@ h1 {
   position: sticky;
   top: 0;
 }
+
+#section0 {
+  position: relative;
+}
+
+.svg-avatar {
+  position: absolute;
+  top: 41%;
+  left: 51%;
+  transform: translate(-47%, -55%);
+}
