@@ -62,7 +62,7 @@ menuModal.addEventListener('click', changeArrow);
 ////animations
 
 // Init Setups
-gsap.set(["#bubbles rect", "#bubbles circle", "#bubbles path"], {
+gsap.set(["#bubbles rect", "#bubbles circle", "#bubbles path", "#bubbles2 g"], {
   transformOrigin: "50% 50%"
 });
 
@@ -77,7 +77,6 @@ const tl = gsap.timeline({
         scrub: 2,
         start: 'top top',
         end: 'bottom top',
-        markers: true,
       }
     });
 
@@ -115,6 +114,14 @@ tl.from(
       }
     },
     0
+).from(
+    ".main-awatar",
+    {
+        duration: 2.6,
+        y: 1050,
+        ease: "elastic.out(.1, 0.1)",
+    },
+    1
 );
 
 
@@ -133,3 +140,33 @@ let triggers = panels.map((panel, i) => {
   });
   return tween.scrollTrigger;
 });
+
+const previewTitle = document.querySelector('.preview-title');
+
+const splitText = (el) => {
+    el.innerHTML = el.textContent.replace(/(\S*)/g, m => {
+        return `<div class="word">` +
+            m.replace(/(-|#|@)?\S(-|#|@)?/g, "<div class='letter'>$&</div>") +
+            `</div>`;
+    });
+    return el;
+};
+
+const split = splitText(previewTitle);
+
+function random(min, max){
+    return (Math.random() * (max - min)) + min;
+}
+
+Array.from(split.querySelectorAll('.letter')).forEach((el, idx) => {
+    TweenMax.from(el, 1.5, {
+        opacity: 0,
+        scale: 0.1,
+        x: random(-500, 500),
+        y: random(-500, 500),
+        z: random(-500, 500),
+        delay: idx * 0.02,
+        repeat: 0
+    })
+})
+

@@ -508,3 +508,19 @@ h1 {
   left: 51%;
   transform: translate(-47%, -55%);
 }
+
+.preview__text-block_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 102%;
+}
+
+.preview-title {
+  padding-top: 0;
+}
+
+.preview-title div,
+.preview-subtitle div {
+  display: inline-block;
+}
