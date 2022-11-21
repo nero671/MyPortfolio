@@ -8,6 +8,7 @@ const modal = document.querySelector('.modal');
 const modalClose = document.querySelector('.modal__close');
 
 
+
 for (let anchor of anchors) {
   anchor.addEventListener('click', function (e) {
     e.preventDefault()
@@ -60,7 +61,6 @@ menuModal.addEventListener('click', changeArrow);
 
 
 ////animations
-
 // Init Setups
 gsap.set(["#bubbles rect", "#bubbles circle", "#bubbles path", "#bubbles2 g"], {
   transformOrigin: "50% 50%"
@@ -142,6 +142,7 @@ let triggers = panels.map((panel, i) => {
 });
 
 const previewTitle = document.querySelector('.preview-title');
+const previewSubtitle = document.querySelector('.preview-subtitle');
 
 const splitText = (el) => {
     el.innerHTML = el.textContent.replace(/(\S*)/g, m => {
@@ -153,12 +154,13 @@ const splitText = (el) => {
 };
 
 const split = splitText(previewTitle);
+const splitSub = splitText(previewSubtitle);
 
 function random(min, max){
     return (Math.random() * (max - min)) + min;
 }
 
-Array.from(split.querySelectorAll('.letter')).forEach((el, idx) => {
+const animateLetter = (el, idx, delay) => {
     TweenMax.from(el, 1.5, {
         opacity: 0,
         scale: 0.1,
@@ -167,6 +169,47 @@ Array.from(split.querySelectorAll('.letter')).forEach((el, idx) => {
         z: random(-500, 500),
         delay: idx * 0.02,
         repeat: 0
-    })
+    }, delay)
+}
+
+Array.from(splitSub.querySelectorAll('.letter')).forEach((el, idx) => {
+    animateLetter(el, idx, 3.4)
 })
+
+Array.from(split.querySelectorAll('.letter')).forEach((el, idx) => {
+    animateLetter(el, idx, 2.8);
+})
+
+TweenLite.from('.blob-btn', {
+    opacity: 0,
+    scale: 0.25
+}, 5.2);
+
+const preLoader = () => {
+    const preloader = document.querySelector('.preloader');
+
+    // setTimeout(() => {
+    //   loader.style.width = '25%';
+    // }, 300);
+
+    // setTimeout(() => {
+    //   loader.style.width = '50%';
+    // }, 500);
+
+    // setTimeout(() => {
+    //   loader.style.width = '75%';
+    // }, 700);
+
+    window.addEventListener('load', () => {
+        if (preloader) {
+            preloader.style.display = 'flex'
+            setTimeout(() => {
+                preloader.style.display = 'none';
+                ScrollTrigger.refresh();
+            }, 1000);
+        }
+    });
+};
+
+// preLoader();
 
