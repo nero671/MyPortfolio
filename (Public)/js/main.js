@@ -126,6 +126,7 @@ tl.from(
 
 
 let panels = gsap.utils.toArray(".panel");
+let panel2 = gsap.utils.toArray(".panel2");
 
 let triggers = panels.map((panel, i) => {
   let tween = gsap.to(panel, {
@@ -136,10 +137,48 @@ let triggers = panels.map((panel, i) => {
       scrub: 1,
       pin: true,
       pinSpacing: false
-    }
+    },
   });
-  return tween.scrollTrigger;
+
+    let tween2 = gsap.to(panel2, {
+        scale: 1,
+        opacity: 1,
+        scrollTrigger: {
+            trigger: panel2,
+            start: "bottom bottom",
+            markers: true,
+            scrub: 1,
+
+        }
+    });
+  // return tween.scrollTrigger;
 });
+
+const tm = gsap.timeline({
+    defaults: {
+        ease: "none"
+    },
+    scrollTrigger: {
+        trigger: ".section-panel__wrapper",
+        pin: true,
+        start: "top, top",
+        end: "+=100%",
+        scrub: true,
+        markers: true
+    },
+});
+
+panel2.forEach((item, index) => {
+    if (index > 0) {
+        tm.to(panel2[index - 1], {opacity: 0}, "+=0.25").to(
+            item,
+            {opacity: 1},
+            "<"
+        );
+    }
+})
+
+tm.to({}, { duration: 0.25 });
 
 const previewTitle = document.querySelector('.preview-title');
 const previewSubtitle = document.querySelector('.preview-subtitle');

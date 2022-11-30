@@ -478,6 +478,7 @@ h1 {
 
 #section2 {
   background: #fff;
+  height: 100vh;
 }
 
 #section2 .container {
@@ -489,10 +490,6 @@ h1 {
 }
 
 .section0 {
-  height: 100vh;
-}
-
-.panel {
   height: 100vh;
   position: sticky;
   top: 0;
@@ -951,5 +948,20 @@ h1 {
   to {
     left: calc(100% + 100px);
   }
+}
+
+.section-panel__wrapper {
+  position: relative;
+}
+
+.panel2:not(:first-child) {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background: transparent;
+}
+.panel2:not(:first-child) {
+  opacity: 0 ;
 }
 
