@@ -224,31 +224,72 @@ TweenLite.from('.blob-btn', {
     scale: 0.25
 }, 5.2);
 
-const preLoader = () => {
-    const preloader = document.querySelector('.preloader');
 
-    // setTimeout(() => {
-    //   loader.style.width = '25%';
-    // }, 300);
 
-    // setTimeout(() => {
-    //   loader.style.width = '50%';
-    // }, 500);
 
-    // setTimeout(() => {
-    //   loader.style.width = '75%';
-    // }, 700);
 
-    window.addEventListener('load', () => {
-        if (preloader) {
-            preloader.style.display = 'flex'
-            setTimeout(() => {
-                preloader.style.display = 'none';
-                ScrollTrigger.refresh();
-            }, 1000);
-        }
-    });
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const preLoader = () => {
+//     const preloader = document.querySelector('.preloader');
+//
+//     window.addEventListener('load', () => {
+//         if (preloader) {
+//             preloader.style.display = 'flex'
+//             setTimeout(() => {
+//                 preloader.style.display = 'none';
+//                 ScrollTrigger.refresh();
+//             }, 1000);
+//         }
+//     });
+// };
 
 // preLoader();
 
