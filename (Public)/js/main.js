@@ -6,6 +6,11 @@ const menuModal = document.querySelector('.menu__modal');
 const conectionLogoIcon = document.querySelector('.conection__logo_icon');
 const modal = document.querySelector('.modal');
 const modalClose = document.querySelector('.modal__close');
+const bestWorks = document.querySelector('#best-works .best-works');
+const webWorks = document.querySelector('#sites .web-works');
+const reactWorks = document.querySelector('#react-works .react-works');
+const jsWorks = document.querySelector('#js-services .js-works');
+const gamesWorks = document.querySelector('#games-services .games-works');
 
 
 
@@ -83,9 +88,6 @@ const tl = gsap.timeline({
     ScrollTrigger.refresh()
   }
 });
-// Debuggers
-//tl.seek(1, false);
-//ScrubGSAPTimeline(tl);
 
 tl.from(
     ".circle_g",
@@ -124,61 +126,180 @@ tl.from(
     1
 );
 
-
+// const wrapper = document.querySelector('.wrapper')
+// gsap.registerPlugin(ScrollTrigger);
+// gsap.defaults({ease: "none", duration: 10});
+// let tl3 = gsap.timeline();
+//
+// tl3.to('.panel', {
+//     scale: 0.75,
+// }, 0).
+// from('.panel_animation2', {
+//     opacity: 1,
+//     y: -100,
+// }, 0).
+// to('.panel_animation2', {
+//         opacity: 1
+// }, 0)
+//
+// ScrollTrigger.create({
+//     animation: tl3,
+//     trigger: '.wrapper',
+//     start: "top top",
+//     end: () => wrapper.offsetWidth / 2,
+//     scrub: true,
+//     pin: true,
+//     anticipatePin: 1,
+//     pinType: "fixed",
+// })
 let panels = gsap.utils.toArray(".panel");
-let panel2 = gsap.utils.toArray(".panel2");
+let panelAnimation2 = gsap.utils.toArray(".panel_animation2");
 
-let triggers = panels.map((panel, i) => {
-  let tween = gsap.to(panel, {
-    scale: 0.75,
+// let triggers = panels.map((panel, i) => {
+//   let tween = gsap.to(panel, {
+//     scale: 0.75, opacity: 1,
+//     scrollTrigger: {
+//       trigger: panel,
+//       start: "bottom bottom",
+//       scrub: 1,
+//       pin: true,
+//       pinSpacing: false
+//     },
+//   });
+// });
+
+gsap.to('.panel', {
     scrollTrigger: {
-      trigger: panel,
-      start: "bottom bottom",
-      scrub: 1,
-      pin: true,
-      pinSpacing: false
-    },
-  });
-
-    let tween2 = gsap.to(panel2, {
-        scale: 1,
-        opacity: 1,
-        scrollTrigger: {
-            trigger: panel2,
-            start: "bottom bottom",
-            markers: true,
-            scrub: 1,
-
-        }
-    });
-  // return tween.scrollTrigger;
-});
-
-const tm = gsap.timeline({
-    defaults: {
-        ease: "none"
-    },
-    scrollTrigger: {
-        trigger: ".section-panel__wrapper",
+        trigger: '.panel',
+        start: "bottom bottom",
+        scrub: 1,
         pin: true,
-        start: "top, top",
-        end: "+=100%",
-        scrub: true,
-        markers: true
+        pinSpacing: false,
     },
-});
-
-panel2.forEach((item, index) => {
-    if (index > 0) {
-        tm.to(panel2[index - 1], {opacity: 0}, "+=0.25").to(
-            item,
-            {opacity: 1},
-            "<"
-        );
-    }
+    scale: 0.75,
 })
 
-tm.to({}, { duration: 0.25 });
+
+// gsap.to('#section1', {
+//     scrollTrigger: {
+//         trigger: '.section-container',
+//         start: 'center 150px',
+//         end: 'center 100px',
+//         pin: true,
+//         anticipatePin: 1,
+//         scrub: 1,
+//         markers: true,
+//     },
+//     opacity: 0,
+//     ease: 'ease',
+//
+//
+// });
+//
+// gsap.set('#section2', { height: '100vh' });
+
+
+// gsap.to('#section2', {
+//     scrollTrigger: {
+//         trigger: '#section2',
+//         start: "top top",
+//         endTrigger: '#section3',
+//         end: "top top",
+//         pin: true,
+//         anticipatePin: 1,
+//         scrub: 1,
+//         markers: true,
+//     },
+//     opacity: 0,
+//     ease: "ease",
+// })
+// gsap.to('#section2', {
+//     scrollTrigger: {
+//         trigger: '#section2',
+//         start: "50px 50px",
+//         end: "+=500",
+//         pin: true,
+//         anticipatePin: 1,
+//         scrub: 1,
+//     },
+//     opacity: 0,
+//     ease: "ease",
+//     y: 100,
+//     duration: 1,
+// })
+
+/////////////////FOR TEST//////////////////
+
+// const tl4 = gsap.timeline();
+//
+// tl4.fromTo('#section1', {opacity: 1}, {y: 0});
+// tl4.fromTo('#section2', {opacity: 0}, {y:0});
+//
+//
+// const sectionWrapper2 = document.querySelector('.panel_animation2__wrapper');
+//
+// ScrollTrigger.create({
+//     animation: tl4,
+//     trigger: '.panel_animation2__wrapper',
+//     start: 'top top',
+//     end: () => sectionWrapper2.offsetWidth / 2,
+//     scrub: true,
+//     pin: true,
+// });
+
+
+panelAnimation2.forEach((section, index) => {
+    const color = section.querySelector(".panel_animation__color");
+
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: section,
+            pin: true,
+            anticipatePin: 1,
+            scrub: 1,
+            start: "50px 50px",
+            end: "+=500",
+            markers: true,
+        }
+    });
+
+    if (index > 0) {
+        tl.from(color, { opacity: 0, ease: "ease", duration: 0.1 });
+    }
+
+    if (index < panelAnimation2.length - 1) {
+        tl.to(color, { opacity: 0, ease: "ease", duration: 0.1 });
+    }
+
+
+});
+
+
+const tl2 = gsap.timeline();
+
+tl2.fromTo('#best-works', {x: '-100%', y: '+100%  '}, {y: 0});
+tl2.fromTo('#sites', {x: '-100%'}, {x: '-200%'});
+tl2.fromTo('#react', {x: '-400%'}, {x: '-300%'});
+tl2.fromTo('#js-services', {x: '-200%'}, {x: '-400%'});
+tl2.fromTo('#games', {x: '-300%'}, {x: '-500%'});
+
+const sectionWrapper = document.querySelector('.section-wrapper');
+
+ScrollTrigger.create({
+    animation: tl2,
+    trigger: '.section-wrapper',
+    start: 'top top',
+    end: () => sectionWrapper.offsetWidth / 2,
+    scrub: true,
+    pin: true,
+});
+
+// ScrollTrigger.defaults({
+//     scroller: window,
+//     throttle: 1 // Используйте подходящее значение throttle для вашего случая.
+// });
+
+
 
 const previewTitle = document.querySelector('.preview-title');
 const previewSubtitle = document.querySelector('.preview-subtitle');
@@ -223,6 +344,45 @@ TweenLite.from('.blob-btn', {
     opacity: 0,
     scale: 0.25
 }, 5.2);
+
+const swiperInit = (selector) => {
+    new Swiper(selector, {
+        grabCursor: true,
+        loop: true,
+        pagination: {
+            el: selector.nextElementSibling,
+            dynamicBullets: true,
+            clickable: true,
+        },
+        navigation: {
+            nextEl: selector.parentNode.querySelector('.btn-next'),
+            prevEl: selector.parentNode.querySelector('.btn-prev')
+        },
+        breakpoints: {
+            320: {
+                spaceBetween: 10,
+                centeredSlides: true,
+                slidesPerView: 'auto',
+            },
+            501: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+        },
+    });
+
+    console.log(selector.nextElementSibling)
+}
+
+swiperInit(bestWorks);
+swiperInit(webWorks);
+// swiperInit(reactWorks);
+swiperInit(jsWorks);
+// swiperInit(gamesWorks);
+
+
+
+
 
 
 
