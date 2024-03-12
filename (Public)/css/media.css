@@ -94,6 +94,10 @@
   .title__wrapper svg {
     display: none;
   }
+
+  #best-works, #sites, #react, #js-services, #games {
+    margin-top: -1px;
+  }
 }
 
 
@@ -110,6 +114,10 @@
 
   .overlay {
     width: inherit;
+  }
+
+  html {
+    overflow-x: hidden;
   }
 }
 
@@ -218,6 +226,66 @@
 
   #react .arrow-slider-arrow {
     display: flex;
+  }
+
+  .future {
+    text-align: center;
+  }
+}
+
+@media(max-width: 400px) {
+  .skills {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .skills__round,
+  .skills__round-inner {
+    width: 150px;
+    height: 150px;
+  }
+
+  .skills__round-inner {
+    padding-top: 25px;
+  }
+
+  .subskills {
+    width: 70px;
+    height: 70px;
+  }
+
+  .subskills__text {
+    font-size: 10px;
+  }
+
+  .svg-avatar {
+    top: 40%;
+  }
+}
+
+@media(max-width: 360px) {
+  .skills {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .skills__round,
+  .skills__round-inner {
+    width: 130px;
+    height: 130px;
+  }
+
+  .skills__round-inner {
+    padding-top: 15px;
+  }
+
+  .subskills {
+    width: 55px;
+    height: 55px;
+  }
+
+  .subskills__text {
+    font-size: 9px;
   }
 }
 
