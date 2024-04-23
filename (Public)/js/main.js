@@ -16,6 +16,7 @@ const bw = document.body.clientWidth;
 window.addEventListener('load', function () {
     var preloader = document.getElementById('preloader');
     preloader.style.display = 'none';
+    animations();
 });
 
 
@@ -72,166 +73,168 @@ menuModal.addEventListener('click', changeArrow);
 
 
 ////animations
-
-if (bw > 1400) {
-    gsap.set(["#bubbles rect", "#bubbles circle", "#bubbles path", "#bubbles2 g, bubble"], {
-        transformOrigin: "50% 50%"
-    });
+const animations = () => {
+    if (bw > 1400) {
+        gsap.set(["#bubbles rect", "#bubbles circle", "#bubbles path", "#bubbles2 g, bubble"], {
+            transformOrigin: "50% 50%"
+        });
 
 // Init Timeline
-    const tl = gsap.timeline({
-        paused: false,
-        onComplete: () => {
-            gsap.to(".bubble", {
-                yPercent: -200,
-                scrollTrigger: {
-                    trigger: 'svg',
-                    scrub: 2,
-                    start: 'top top',
-                    end: 'bottom top',
+        const tl = gsap.timeline({
+            paused: false,
+            onComplete: () => {
+                gsap.to(".bubble", {
+                    yPercent: -200,
+                    scrollTrigger: {
+                        trigger: 'svg',
+                        scrub: 2,
+                        start: 'top top',
+                        end: 'bottom top',
+                    }
+                });
+
+                ScrollTrigger.refresh()
+            }
+        });
+
+        tl.from(
+            ".circle_g",
+            {
+                duration: 2.75,
+                y: 150,
+                ease: "elastic.out(.25, 0.1)",
+                stagger: {
+                    from: "random",
+                    grid: [1, 4],
+                    amount: 1,
+                    ease: "power2"
                 }
+            },
+            0
+        ).from(
+            ".bubble",
+            {
+                duration: 1.5,
+                y: 150,
+                ease: "elastic.out(.1, 0.1)",
+                stagger: {
+                    from: "random",
+                    grid: [5, 15],
+                    amount: 1.5
+                }
+            },
+            0
+        ).from(
+            ".main-awatar",
+            {
+                duration: 2.6,
+                y: 1050,
+                ease: "elastic.out(.1, 0.1)",
+            },
+            1
+        ).to(
+            '.round', {
+                duration: 2.6,
+                css: {
+                    left: "-200px"
+                },
+                ease: "elastic.out(.1, 0.1)",
+            }, 4
+        ).to(
+            '.round2', {
+                duration: 2.6,
+                css: {
+                    right: "-200px",
+                    left: 'initial'
+                },
+                ease: "elastic.out(.1, 0.1)",
+            }, 4
+        );
+
+        gsap.utils.toArray('.panel').forEach((panel) => {
+            ScrollTrigger.create({
+                trigger: panel,
+                start: "top top",
+                scrub: 1,
+                pin: true,
+                pinSpacing: false,
             });
+        });
 
-            ScrollTrigger.refresh()
-        }
-    });
+        const tl2 = gsap.timeline();
+        tl2.fromTo('#best-works', {x: 0, y: 0}, {y: 0});
+        tl2.fromTo('#sites', {x: '-100%', y: '-500%'}, {y: 0, ease: Power4.easeOut});
+        tl2.fromTo('#react', {x: '-100%'}, {x: '-200%'});
+        tl2.fromTo('#js-services', {x: '-400%'}, {x: '-300%'});
+        tl2.fromTo('#games', {x: '-100%', y: '-100%'}, {y: '0%'});
 
-    tl.from(
-        ".circle_g",
-        {
-            duration: 2.75,
-            y: 150,
-            ease: "elastic.out(.25, 0.1)",
-            stagger: {
-                from: "random",
-                grid: [1, 4],
-                amount: 1,
-                ease: "power2"
-            }
-        },
-        0
-    ).from(
-        ".bubble",
-        {
-            duration: 1.5,
-            y: 150,
-            ease: "elastic.out(.1, 0.1)",
-            stagger: {
-                from: "random",
-                grid: [5, 15],
-                amount: 1.5
-            }
-        },
-        0
-    ).from(
-        ".main-awatar",
-        {
-            duration: 2.6,
-            y: 1050,
-            ease: "elastic.out(.1, 0.1)",
-        },
-        1
-    ).to(
-        '.round', {
-            duration: 2.6,
-            css: {
-                left: "-200px"
-            },
-            ease: "elastic.out(.1, 0.1)",
-        }, 4
-    ).to(
-        '.round2', {
-            duration: 2.6,
-            css: {
-                right: "-200px",
-                left: 'initial'
-            },
-            ease: "elastic.out(.1, 0.1)",
-        }, 4
-    );
+        const sectionWrapper = document.querySelector('.section-wrapper');
 
-    gsap.utils.toArray('.panel').forEach((panel) => {
         ScrollTrigger.create({
-            trigger: panel,
-            start: "top top",
-            scrub: 1,
+            animation: tl2,
+            trigger: '.section-wrapper',
+            start: 'top top',
+            end: () => sectionWrapper.offsetWidth / 2,
+            scrub: true,
             pin: true,
-            pinSpacing: false,
         });
-    });
 
-    const tl2 = gsap.timeline();
-    tl2.fromTo('#best-works', {x: 0, y: 0}, {y: 0});
-    tl2.fromTo('#sites', {x: '-100%', y: '-500%'}, {y: 0, ease: Power4.easeOut});
-    tl2.fromTo('#react', {x: '-100%'}, {x: '-200%'});
-    tl2.fromTo('#js-services', {x: '-400%'}, {x: '-300%'});
-    tl2.fromTo('#games', {x: '-100%', y: '-100%'}, {y: '0%'});
-
-    const sectionWrapper = document.querySelector('.section-wrapper');
-
-    ScrollTrigger.create({
-        animation: tl2,
-        trigger: '.section-wrapper',
-        start: 'top top',
-        end: () => sectionWrapper.offsetWidth / 2,
-        scrub: true,
-        pin: true,
-    });
-
-    ScrollTrigger.defaults({
-        scroller: window,
-        throttle: 1
-    });
-
-    const previewTitle = document.querySelector('.preview-title');
-    const previewSubtitle = document.querySelector('.preview-subtitle');
-
-    const splitText = (el) => {
-        el.innerHTML = el.textContent.replace(/(\S*)/g, m => {
-            return `<div class="word">` +
-                m.replace(/(-|#|@)?\S(-|#|@)?/g, "<div class='letter'>$&</div>") +
-                `</div>`;
+        ScrollTrigger.defaults({
+            scroller: window,
+            throttle: 1
         });
-        return el;
-    };
 
-    const split = splitText(previewTitle);
-    const splitSub = splitText(previewSubtitle);
+        const previewTitle = document.querySelector('.preview-title');
+        const previewSubtitle = document.querySelector('.preview-subtitle');
 
-    function random(min, max){
-        return (Math.random() * (max - min)) + min;
-    }
+        const splitText = (el) => {
+            el.innerHTML = el.textContent.replace(/(\S*)/g, m => {
+                return `<div class="word">` +
+                    m.replace(/(-|#|@)?\S(-|#|@)?/g, "<div class='letter'>$&</div>") +
+                    `</div>`;
+            });
+            return el;
+        };
 
-    const animateLetter = (el, idx, delay) => {
-        TweenMax.from(el, 1.5, {
+        const split = splitText(previewTitle);
+        const splitSub = splitText(previewSubtitle);
+
+        function random(min, max){
+            return (Math.random() * (max - min)) + min;
+        }
+
+        const animateLetter = (el, idx, delay) => {
+            TweenMax.from(el, 1.5, {
+                opacity: 0,
+                scale: 0.1,
+                x: random(-500, 500),
+                y: random(-500, 500),
+                z: random(-500, 500),
+                delay: idx * 0.02,
+                repeat: 0
+            }, delay)
+        }
+
+        Array.from(splitSub.querySelectorAll('.letter')).forEach((el, idx) => {
+            animateLetter(el, idx, 3.4)
+        })
+
+        Array.from(split.querySelectorAll('.letter')).forEach((el, idx) => {
+            animateLetter(el, idx, 2.8);
+        })
+
+        TweenLite.from('.blob-btn', {
             opacity: 0,
-            scale: 0.1,
-            x: random(-500, 500),
-            y: random(-500, 500),
-            z: random(-500, 500),
-            delay: idx * 0.02,
-            repeat: 0
-        }, delay)
+            scale: 0.25
+        }, 5.2);
+
+        TweenLite.from('.bubble-link', {
+            opacity: 0,
+            scale: 0.25
+        }, 5.5);
     }
-
-    Array.from(splitSub.querySelectorAll('.letter')).forEach((el, idx) => {
-        animateLetter(el, idx, 3.4)
-    })
-
-    Array.from(split.querySelectorAll('.letter')).forEach((el, idx) => {
-        animateLetter(el, idx, 2.8);
-    })
-
-    TweenLite.from('.blob-btn', {
-        opacity: 0,
-        scale: 0.25
-    }, 5.2);
-
-    TweenLite.from('.bubble-link', {
-        opacity: 0,
-        scale: 0.25
-    }, 5.5);
 }
+
 
 
 const swiperInit = (selector) => {
@@ -268,16 +271,16 @@ const swiperInit = (selector) => {
     });
 }
 
-const scrollToNextSection = () => {
-    const nextSection = document.getElementById('section1');
-    const offset = 70;
-    const targetY = nextSection.offsetTop - offset;
-
-    window.scrollTo({
-        top: targetY,
-        behavior: 'smooth',
-    });
-};
+// const scrollToNextSection = () => {
+//     const nextSection = document.getElementById('section1');
+//     const offset = 70;
+//     const targetY = nextSection.offsetTop - offset;
+//
+//     window.scrollTo({
+//         top: targetY,
+//         behavior: 'smooth',
+//     });
+// };
 // const previewLink = document.querySelector('.preview-link');
 // previewLink.addEventListener('click', () => document.body.classList.remove('no-scroll'))
 // previewLink.addEventListener('click', scrollToNextSection);
@@ -287,7 +290,6 @@ swiperInit(webWorks);
 if (bw < 490) {
     swiperInit(reactWorks);
 }
-
 swiperInit(jsWorks);
 // swiperInit(gamesWorks);
 
