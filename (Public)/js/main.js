@@ -13,6 +13,11 @@ const jsWorks = document.querySelector('#js-services .js-works');
 const gamesWorks = document.querySelector('#games-services .games-works');
 const bw = document.body.clientWidth;
 
+window.addEventListener('load', function () {
+    var preloader = document.getElementById('preloader');
+    preloader.style.display = 'none';
+});
+
 
 
 for (let anchor of anchors) {
