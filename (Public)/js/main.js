@@ -287,7 +287,7 @@ const swiperInit = (selector) => {
 
 swiperInit(bestWorks);
 swiperInit(webWorks);
-if (bw < 490) {
+if (bw < 1400) {
     swiperInit(reactWorks);
 }
 swiperInit(jsWorks);
