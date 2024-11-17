@@ -9,9 +9,9 @@ body {
   /*background: #4e344b;*/
 }
 
-/*.no-scroll {*/
-/*  overflow: hidden;*/
-/*}*/
+.lock {
+  overflow: hidden;
+}
 
 /** {*/
 /*  scrollbar-width: 0px;*/
@@ -212,11 +212,19 @@ div, ul, li {
 }
 
 .skills-bg {
-  background: url(../img/bg17.jpg) no-repeat center center / cover;
+  /*background: url(../img/bg17.jpg) no-repeat center center / cover;*/
   height: 100vh;
   color: #fff;
+  position: relative;
   /*padding: 55px;*/
   /*margin-bottom: 85px;*/
+}
+
+.skills-bg > img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .header {
@@ -650,6 +658,8 @@ h1 span {
 .skills-overlay {
   background: rgba(0, 0, 0, 0.3);
   height: 100%;
+  width: 100%;
+  position: absolute;
 }
 
 .overlay hr {
@@ -671,6 +681,9 @@ h1 span {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: #fff;
+  margin-top: 100px;
+  width: 100%;
 }
 
 .menu__modal {
@@ -1337,15 +1350,15 @@ h1 span {
   opacity: 0 ;
 }
 
-#best-works,
-#sites,
-#react,
-#js-services,
-#games {
-  position: relative;
-  z-index: 1;
-  background: #fff;
-}
+/*#best-works,*/
+/*#sites,*/
+/*#react,*/
+/*#js-services,*/
+/*#games {*/
+/*  position: relative;*/
+/*  z-index: 1;*/
+/*  background: #fff;*/
+/*}*/
 
 #skills {
   height: 100vh;
@@ -1483,16 +1496,16 @@ h1 span {
 /*  z-index: 2;*/
 /*}*/
 
-.section-wrapper {
-  height: 100vh !important;
-  width: 500vw !important;
-  display: flex;
-}
+/*.section-wrapper {*/
+/*  height: 100vh !important;*/
+/*  width: 500vw !important;*/
+/*  display: flex;*/
+/*}*/
 
-.section-wrapper section {
-  height: 100%;
-  width: 100vw;
-}
+/*.section-wrapper section {*/
+/*  height: 100%;*/
+/*  width: 100vw;*/
+/*}*/
 
 .works-tabs {
   display: grid;
@@ -1558,13 +1571,13 @@ h1 span {
   opacity: 1;
 }
 
-#best-works,
-#sites,
-#react,
-#js-services,
-#games {
-  background: url(../img/bg13.jpg) no-repeat center top / cover;
-}
+/*#best-works,*/
+/*#sites,*/
+/*#react,*/
+/*#js-services,*/
+/*#games {*/
+/*  background: url(../img/bg13.jpg) no-repeat center top / cover;*/
+/*}*/
 
 #section0 svg a svg g path {
   transition: 0.35s;
@@ -1659,6 +1672,12 @@ h1 span {
 
 .skills__item-wrapper {
   position: relative;
+  transition: 0.3s ease-in-out;
+}
+
+.skills__item-wrapper:hover {
+  transform: scale(1.1); /* увеличение круга */
+  opacity: 0.7;
 }
 
 .subskills-wrapper {
@@ -1752,11 +1771,110 @@ h1 span {
   display: none;
 }
 
-#games {
+/*#games {*/
+/*  display: none;*/
+/*}*/
+
+#react .arrow-slider-arrow {
   display: none;
 }
 
-#react .arrow-slider-arrow {
+.section-wrapper {
+  height: 90vh;
+  width: 400vw;
+  display: flex;
+}
+
+.section-wrapper section {
+  padding-top: 100px;
+  /*padding: 100px 0;*/
+  height: 100%;
+  width: 100vw;
+  background-color: transparent;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1); /* увеличение круга */
+    opacity: 0.7; /* уменьшение прозрачности */
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.pulse {
+  animation: pulse 2s;
+}
+
+.no-click.pulse {
+  animation: none;
+}
+
+.works__items-title {
+  font-size: 36px;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Irish Grover', sans-serif;
+  text-align: center;
+  transition: 0.35s ease-in-out;
+}
+
+.swiper-button-disabled {
+  cursor: initial;
+
+  svg {
+    opacity: 0.5;
+  }
+}
+
+.swiper-button-disabled:hover {
+  background: transparent;
+
+  svg path {
+    fill: #888886;
+  }
+}
+
+/*.works__items:hover:after {*/
+/*  content: '';*/
+/*  width: 100%;*/
+/*  height: 100%;*/
+/*  inset: 0;*/
+/*  display: block;*/
+/*  position: absolute;*/
+/*  z-index: 1;*/
+/*  background: rgba(0, 0, 0, 0.6);*/
+/*}*/
+
+.works__items:hover {
+  .works__items-title {
+    scale: 1.05;
+    z-index: 99;
+  }
+}
+
+.section-wrapper-links {
+  display: none;
+}
+
+.arrow-slider-title-wrapper_btn[data-slider-id="4"] {
+  opacity: 0;
+  z-index: -9;
+}
+
+.fourth:has(~ .active) .arrow-slider-arrow {
   display: none;
 }
 

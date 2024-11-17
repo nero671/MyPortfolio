@@ -10,7 +10,7 @@ const bestWorks = document.querySelector('#best-works .best-works');
 const webWorks = document.querySelector('#sites .web-works');
 const reactWorks = document.querySelector('#react .react-works');
 const jsWorks = document.querySelector('#js-services .js-works');
-const gamesWorks = document.querySelector('#games-services .games-works');
+const gamesWorks = document.querySelector('#games .games-work');
 const bw = document.body.clientWidth;
 
 window.addEventListener('load', function () {
@@ -48,6 +48,7 @@ function changeArrow() {
 
 function openModal() {
   modal.classList.add('is-open');
+  document.querySelector('body').classList.add('lock')
 }
 
 const closeModal = event => {
@@ -57,7 +58,9 @@ const closeModal = event => {
     event.code == 'Escape') {
     modal.classList.remove('is-open');
     document.removeEventListener('keydown', closeModal);
+      document.querySelector('body').classList.remove('lock')
   }
+
 };
 
 document.addEventListener('keydown', closeModal);
@@ -100,7 +103,7 @@ const animations = () => {
         tl.from(
             ".circle_g",
             {
-                duration: 2.75,
+                duration: 2.55,
                 y: 150,
                 ease: "elastic.out(.25, 0.1)",
                 stagger: {
@@ -114,7 +117,7 @@ const animations = () => {
         ).from(
             ".bubble",
             {
-                duration: 1.5,
+                duration: 1.3,
                 y: 150,
                 ease: "elastic.out(.1, 0.1)",
                 stagger: {
@@ -127,14 +130,14 @@ const animations = () => {
         ).from(
             ".main-awatar",
             {
-                duration: 2.6,
+                duration: 2.4,
                 y: 1050,
                 ease: "elastic.out(.1, 0.1)",
             },
             1
         ).to(
             '.round', {
-                duration: 2.6,
+                duration: 2.4,
                 css: {
                     left: "-200px"
                 },
@@ -142,7 +145,7 @@ const animations = () => {
             }, 4
         ).to(
             '.round2', {
-                duration: 2.6,
+                duration: 2.4,
                 css: {
                     right: "-200px",
                     left: 'initial'
@@ -159,29 +162,6 @@ const animations = () => {
                 pin: true,
                 pinSpacing: false,
             });
-        });
-
-        const tl2 = gsap.timeline();
-        tl2.fromTo('#best-works', {x: 0, y: 0}, {y: 0});
-        tl2.fromTo('#sites', {x: '-100%', y: '-500%'}, {y: 0, ease: Power4.easeOut});
-        tl2.fromTo('#react', {x: '-100%'}, {x: '-200%'});
-        tl2.fromTo('#js-services', {x: '-400%'}, {x: '-300%'});
-        tl2.fromTo('#games', {x: '-100%', y: '-100%'}, {y: '0%'});
-
-        const sectionWrapper = document.querySelector('.section-wrapper');
-
-        ScrollTrigger.create({
-            animation: tl2,
-            trigger: '.section-wrapper',
-            start: 'top top',
-            end: () => sectionWrapper.offsetWidth / 2,
-            scrub: true,
-            pin: true,
-        });
-
-        ScrollTrigger.defaults({
-            scroller: window,
-            throttle: 1
         });
 
         const previewTitle = document.querySelector('.preview-title');
@@ -211,8 +191,21 @@ const animations = () => {
                 y: random(-500, 500),
                 z: random(-500, 500),
                 delay: idx * 0.02,
-                repeat: 0
+                repeat: 0,
+                onComplete: () => unLock(),
             }, delay)
+        }
+
+
+        const unLock = () => {
+            document.querySelector('body').classList.remove('lock');
+            localStorage.setItem('isUnlocked', 'true');
+        }
+
+        if (localStorage.getItem('isUnlocked')) {
+            document.querySelector('body').classList.remove('lock');
+        } else {
+            unLock();
         }
 
         Array.from(splitSub.querySelectorAll('.letter')).forEach((el, idx) => {
@@ -235,20 +228,24 @@ const animations = () => {
     }
 }
 
-
+if (bw < 1400) {
+    document.querySelector('body').classList.remove('lock');
+}
 
 const swiperInit = (selector) => {
+    const isSmallScreen = window.matchMedia('(max-width: 1399px)').matches;
+
     new Swiper(selector, {
         grabCursor: true,
-        loop: true,
+        loop: false,
         pagination: {
             el: selector.nextElementSibling,
             dynamicBullets: true,
             clickable: true,
         },
         navigation: {
-            nextEl: selector.parentNode.querySelector('.btn-next'),
-            prevEl: selector.parentNode.querySelector('.btn-prev')
+            nextEl: isSmallScreen ? '.btn-next' : selector.parentNode.querySelector('.btn-next'),
+            prevEl: isSmallScreen ? '.btn-prev' : selector.parentNode.querySelector('.btn-prev'),
         },
         breakpoints: {
             320: {
@@ -271,6 +268,7 @@ const swiperInit = (selector) => {
     });
 }
 
+
 // const scrollToNextSection = () => {
 //     const nextSection = document.getElementById('section1');
 //     const offset = 70;
@@ -287,11 +285,14 @@ const swiperInit = (selector) => {
 
 swiperInit(bestWorks);
 swiperInit(webWorks);
-if (bw < 1400) {
-    swiperInit(reactWorks);
+swiperInit(reactWorks);
+
+if (bw < 490) {
+    swiperInit(gamesWorks);
 }
-swiperInit(jsWorks);
-// swiperInit(gamesWorks);
+
+// swiperInit(jsWorks);
+
 
 
 const togglePopupWindows = () => {
@@ -300,8 +301,6 @@ const togglePopupWindows = () => {
             const popup = document.querySelector(
                 `[data-popup="${target.dataset.type}"]`
             );
-
-            console.log(popup)
 
             if (document.querySelector('._is-open')) {
                 document.querySelectorAll('._is-open').forEach((modal) => {
@@ -343,6 +342,72 @@ skillsItemWrapper.forEach((item) => {
         }
     })
 });
+
+const startRandomPulse = () => {
+
+    skillsItemWrapper.forEach(item => item.classList.remove('pulse'));
+
+    const validItems = Array.from(skillsItemWrapper).filter(item => !item.classList.contains('no-click'));
+
+    if (validItems.length > 0) {
+        const randomIndex = Math.floor(Math.random() * validItems.length);
+        const randomItem = validItems[randomIndex];
+
+        randomItem.classList.add('pulse');
+    }
+}
+
+setInterval(startRandomPulse, 6000);
+
+const sectionLinks = document.querySelector('.section-wrapper-links-wrapper');
+const sectionLink = document.querySelectorAll('.section-wrapper-links-wrapper .title');
+const sectionContent = document.querySelectorAll('.section-wrapper-anchor');
+const tabs = (linkWrapper, link, content) => {
+    const toggleTab = (index, link) => {
+        for(let i = 0; i < content.length; i++) {
+            if (index === i) {
+                link[i].classList.add('active');
+                content[i].classList.add('active');
+            } else {
+                link[i].classList.remove('active');
+                content[i].classList.remove('active');
+            }
+        }
+
+        const activeWork = content[index].querySelector('.section-wrapper-anchor.active .works[data-slider-id]');
+
+        if (activeWork) {
+            const activeSliderId = activeWork.getAttribute('data-slider-id');
+            const buttons = document.querySelectorAll('.arrow-slider-title-wrapper_btn[data-slider-id]');
+
+            buttons.forEach(button => {
+                button.setAttribute('data-slider-id', activeSliderId)
+            });
+        }
+    }
+
+    if(linkWrapper) {
+        linkWrapper.addEventListener('click', (e) => {
+            let target = e.target;
+            const linkClass = '.' + link[1].classList[0];
+            if (target.matches(linkClass)) {
+                link.forEach((item, i) => {
+                    if (item === target) {
+                        toggleTab(i, link);
+                    }
+                })
+            }
+        })
+    }
+}
+
+tabs(sectionLinks,
+sectionLink,
+sectionContent);
+
+
+
+
 
 
 

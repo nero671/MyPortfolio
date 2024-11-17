@@ -1,7 +1,6 @@
 @media(max-width: 1400px) {
   #section0, #section1,
-  .about-me__item._is-open,
-  .skills-bg, .section-wrapper {
+  .about-me__item._is-open {
     height: auto !important;
   }
 
@@ -93,6 +92,8 @@
 
   .arrow-slider-arrow {
     gap: 10px;
+    margin-left: 20px;
+    margin-top: 10px;
   }
 
   .title__wrapper svg {
@@ -102,12 +103,98 @@
   #best-works, #sites, #react, #js-services, #games {
     margin-top: -1px;
   }
+
+  .skills-bg {
+    height: auto;
+  }
+
+  .first .title {
+    display: none;
+  }
+
+  .section-wrapper {
+    position: relative;
+  }
+
+  .section-wrapper-links {
+    position: absolute;
+    z-index: 99999999999;
+    top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: -webkit-fill-available;
+    width: -moz-fill-available;
+    left: 0;
+    padding: 0 20px;
+  }
+
+  .section-wrapper-links-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-wrapper-links-wrapper .btn {
+    padding: 10px 20px;
+    background: #fff;
+    border-radius: 15px;
+    color: #ffaa1a;
+    font-size: 16px;
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    border: 2px solid #ffaa1a;
+  }
+
+  .section-wrapper-links-wrapper .btn.active {
+    background: #ffaa1a;
+    color: #fff;
+  }
+
+  .work__title {
+    display: none;
+  }
+
+  .section-wrapper-anchor {
+    display: none;
+  }
+
+  .section-wrapper-anchor.active {
+    display: block;
+  }
+
+  .section-wrapper {
+    height: auto;
+    width: 100%;
+  }
+
+  .section-wrapper section {
+    height: auto;
+    padding-top: 150px;
+  }
+
+  .footer {
+    margin-top: 0;
+  }
+
+  .swiper-button-disabled:hover {
+    background: #ffaa1a;
+  }
+
+  .work__title {
+    margin-bottom: 0;
+  }
+
+  .section-wrapper-links__main-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
 
 
 @media (max-width: 960px) {
   .container {
-    width: 95%;
+    width: 100%;
   }
   h1 {
     font-size: 55px;
@@ -230,6 +317,33 @@
 
   .future {
     text-align: center;
+  }
+
+  .section-wrapper-links {
+    width: -webkit-fill-available;
+    width: -moz-fill-available;
+    left: 0;
+    padding: 0 20px;
+  }
+
+  .section-wrapper-links-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .section-wrapper-links-wrapper .title {
+    text-align: center;
+  }
+
+  .section-wrapper section {
+    padding-top: 200px;
+  }
+}
+
+@media(max-width: 490px) {
+  .arrow-slider-title-wrapper_btn[data-slider-id="4"] {
+    opacity: 1;
+    z-index: 1;
   }
 }
 
